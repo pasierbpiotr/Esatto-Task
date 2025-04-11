@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="controller.MainController"
+           dividerPositions="0.3"
+           styleClass="root">
+
+    <VBox spacing="10" styleClass="padded-box">
+        <HBox spacing="10">
+            <Button text="Add City" onAction="#handleAddCity" styleClass="primary-button"/>
+            <TextField fx:id="searchField" promptText="Search cities..." styleClass="search-field"/>
+        </HBox>
+        <ListView fx:id="cityList" styleClass="styled-list" VBox.vgrow="ALWAYS"/>
+        <HBox spacing="10" styleClass="pagination-control">
+            <Button fx:id="prevPage" text="&lt; Previous" styleClass="secondary-button"/>
+            <Label fx:id="pageInfo" styleClass="page-info"/>
+            <Button fx:id="nextPage" text="Next &gt;" styleClass="secondary-button"/>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="10" styleClass="padded-box">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Selected City: " styleClass="subtitle"/>
+            <TextField fx:id="locationField" styleClass="location-field" editable="false"/>
+            <Button text="Refresh Weather" onAction="#handleFetchWeather" styleClass="primary-button"/>
+        </HBox>
+        <ListView fx:id="forecastList" styleClass="weather-list" VBox.vgrow="ALWAYS">
+            <placeholder>
+                <Label text="No weather data available. Select a city and fetch weather." styleClass="placeholder-label"/>
+            </placeholder>
+        </ListView>
+    </VBox>
+</SplitPane>
